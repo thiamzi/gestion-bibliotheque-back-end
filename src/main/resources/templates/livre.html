@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Email</title>
+</head>
+<body>
+	<h2>Bibliotheque Universitaire</h2>
+	<div>
+		<p>Bonjour</p>
+		<p  th:text="${message}"></p>
+		<p><b>numero : </b> <span th:text="${numero}"></span></p>
+		<p>Merci de ne pas repondre</p>
+	</div>
+</body>
+</html>
