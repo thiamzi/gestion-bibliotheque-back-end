@@ -5,8 +5,6 @@
  */
 package sn.thies.ut.modeles;
 
-import java.util.Collection;
-
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,15 +18,13 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 /**
  *
  * @author PC
  */
 @Entity
-@Table(name = "user")
+@Table(name = "usermodel")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "User.findAll", query = "SELECT u FROM UserModel u")
@@ -37,7 +33,6 @@ import org.springframework.security.core.userdetails.UserDetails;
     , @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM UserModel u WHERE u.password = :password")})
 public class UserModel {
 
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
