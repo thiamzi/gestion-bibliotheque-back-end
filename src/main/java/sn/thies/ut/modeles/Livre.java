@@ -73,7 +73,7 @@ public class Livre implements Serializable {
     private List<Emprunt> empruntList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "livreIdlivre")
     private List<Reservation> reservationList;
-    @JoinColumn(name = "categorie_idcategorie", referencedColumnName = "idcategorie" )
+    @JoinColumn(name = "categorie_idcategorie", referencedColumnName = "idcategorie" , insertable = true, updatable = true)
     @ManyToOne(optional = false )
     private Categorie categorieIdcategorie;
     @JoinColumn(name = "image_cle", referencedColumnName = "cle")

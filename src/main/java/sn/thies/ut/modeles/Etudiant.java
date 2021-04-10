@@ -76,7 +76,7 @@ public class Etudiant implements Serializable {
     @JoinColumn(name = "image_cle", referencedColumnName = "cle")
     @ManyToOne(optional = false)
     private Image imageCle;
-    @JoinColumn(name = "user_iduser", referencedColumnName = "iduser", insertable = false, updatable = false)
+    @JoinColumn(name = "user_iduser", referencedColumnName = "iduser", insertable = true, updatable = true)
     @OneToOne(optional = true)
     private UserModel userModel;
 

@@ -42,7 +42,7 @@ public class Agent implements Serializable {
     @Basic(optional = false)
     @Column(name = "prenom")
     private String prenom;
-    @JoinColumn(name = "user_iduser", referencedColumnName = "iduser", insertable = false, updatable = false)
+    @JoinColumn(name = "user_iduser", referencedColumnName = "iduser", insertable = true, updatable = true)
     @OneToOne(optional = true)
     private UserModel userModel;
 
