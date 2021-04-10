@@ -25,6 +25,7 @@ public class BibliothecaireService {
 	}
 	
 	public Bibliothecaire AddBibliothecaire(Bibliothecaire biblio) {
+		biblio.setUserIduser(13);
 		return this.bibliothecairerepository.save(biblio);
 	}
 }
