@@ -5,7 +5,6 @@
  */
 package sn.thies.ut.modeles;
 
-import java.awt.TextField;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -57,9 +56,9 @@ public class Livre implements Serializable {
     @Basic(optional = false)
     @Column(name = "auteur")
     private String auteur;
-    @Basic(optional = false )
+    @Basic(optional = false)
     @Column(name = "description" , length = 1000)
-    private TextField description;
+    private String description;
     @Basic(optional = false)
     @Column(name = "exmplaire")
     private int exmplaire;
@@ -88,7 +87,7 @@ public class Livre implements Serializable {
         this.idlivre = idlivre;
     }
 
-    public Livre(Integer idlivre, String titre, String auteur, TextField description, int exmplaire, Date dateCreation, int nbdisponible) {
+    public Livre(Integer idlivre, String titre, String auteur, String description, int exmplaire, Date dateCreation, int nbdisponible) {
         this.idlivre = idlivre;
         this.titre = titre;
         this.auteur = auteur;
@@ -122,11 +121,11 @@ public class Livre implements Serializable {
         this.auteur = auteur;
     }
 
-    public TextField getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(TextField description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
