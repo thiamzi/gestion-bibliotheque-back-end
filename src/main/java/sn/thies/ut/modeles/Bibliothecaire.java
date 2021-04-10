@@ -43,7 +43,7 @@ public class Bibliothecaire implements Serializable {
     @Column(name = "prenom")
     private String prenom;
     @JoinColumn(name = "user_iduser", referencedColumnName = "iduser", insertable = true, updatable = true)
-    @OneToOne(optional = false)
+    @OneToOne(optional = true)
     private UserModel userModel;
 
     public Bibliothecaire() {
