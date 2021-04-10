@@ -23,4 +23,8 @@ public class BibliothecaireService {
 	public Bibliothecaire UpdateBibliothecaire(Bibliothecaire biblio) {
 		return this.bibliothecairerepository.save(biblio);
 	}
+	
+	public Bibliothecaire AddBibliothecaire(Bibliothecaire biblio) {
+		return this.bibliothecairerepository.save(biblio);
+	}
 }
