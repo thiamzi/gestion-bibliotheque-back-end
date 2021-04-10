@@ -86,11 +86,10 @@ public class Bibliothecaire implements Serializable {
     public UserModel getUser() {
         return userModel;
     }
-/*
-    public void setUser(User user) {
-        this.user = user;
+
+    public void setUser(UserModel user) {
+        this.userModel = user;
     }
-*/
     @Override
     public int hashCode() {
         int hash = 0;

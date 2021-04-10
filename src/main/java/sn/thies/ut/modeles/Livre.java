@@ -57,7 +57,7 @@ public class Livre implements Serializable {
     @Column(name = "auteur")
     private String auteur;
     @Basic(optional = false)
-    @Column(name = "description")
+    @Column(name = "description" , length = 1000)
     private String description;
     @Basic(optional = false)
     @Column(name = "exmplaire")
