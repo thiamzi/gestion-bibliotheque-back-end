@@ -14,7 +14,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -33,14 +32,12 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "etudiant")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Etudiant.findAllTrue", query = "SELECT e FROM Etudiant e WHERE e.valide=true")
-    ,@NamedQuery(name = "Etudiant.findAllFalse", query = "SELECT e FROM Etudiant e WHERE e.valide=false")
+    @NamedQuery(name = "Etudiant.findAll", query = "SELECT e FROM Etudiant e")
     , @NamedQuery(name = "Etudiant.findByUserIduser", query = "SELECT e FROM Etudiant e WHERE e.userIduser = :userIduser")
     , @NamedQuery(name = "Etudiant.findByNumeroDossier", query = "SELECT e FROM Etudiant e WHERE e.numeroDossier = :numeroDossier")
     , @NamedQuery(name = "Etudiant.findByNom", query = "SELECT e FROM Etudiant e WHERE e.nom = :nom")
     , @NamedQuery(name = "Etudiant.findByPrenom", query = "SELECT e FROM Etudiant e WHERE e.prenom = :prenom")
     , @NamedQuery(name = "Etudiant.findByDateNaissance", query = "SELECT e FROM Etudiant e WHERE e.dateNaissance = :dateNaissance")
-    , @NamedQuery(name = "Etudiant.findByValide", query = "SELECT e FROM Etudiant e WHERE e.valide = :valide")
     , @NamedQuery(name = "Etudiant.findByDateCreation", query = "SELECT e FROM Etudiant e WHERE e.dateCreation = :dateCreation")})
 public class Etudiant implements Serializable {
 
@@ -63,9 +60,6 @@ public class Etudiant implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date dateNaissance;
     @Basic(optional = false)
-    @Column(name = "valide")
-    private boolean valide;
-    @Basic(optional = false)
     @Column(name = "date_creation")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreation;
@@ -73,9 +67,6 @@ public class Etudiant implements Serializable {
     private List<Emprunt> empruntList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "etudiantUserIduser")
     private List<Reservation> reservationList;
-    @JoinColumn(name = "image_cle", referencedColumnName = "cle")
-    @ManyToOne(optional = false)
-    private Image imageCle;
     @JoinColumn(name = "user_iduser", referencedColumnName = "iduser", insertable = true, updatable = true)
     @OneToOne(optional = true)
     private UserModel userModel;
@@ -87,13 +78,12 @@ public class Etudiant implements Serializable {
         this.userIduser = userIduser;
     }
 
-    public Etudiant(Integer userIduser, String numeroDossier, String nom, String prenom, Date dateNaissance, boolean valide, Date dateCreation) {
+    public Etudiant(Integer userIduser, String numeroDossier, String nom, String prenom, Date dateNaissance, Date dateCreation) {
         this.userIduser = userIduser;
         this.numeroDossier = numeroDossier;
         this.nom = nom;
         this.prenom = prenom;
         this.dateNaissance = dateNaissance;
-        this.valide = valide;
         this.dateCreation = dateCreation;
     }
 
@@ -137,13 +127,6 @@ public class Etudiant implements Serializable {
         this.dateNaissance = dateNaissance;
     }
 
-    public boolean getValide() {
-        return valide;
-    }
-
-    public void setValide(boolean valide) {
-        this.valide = valide;
-    }
 
     public Date getDateCreation() {
         return dateCreation;
@@ -171,13 +154,6 @@ public class Etudiant implements Serializable {
         this.reservationList = reservationList;
     }
 */
-    public Image getImageCle() {
-        return imageCle;
-    }
-
-    public void setImageCle(Image imageCle) {
-        this.imageCle = imageCle;
-    }
 
     public UserModel getUser() {
         return userModel;

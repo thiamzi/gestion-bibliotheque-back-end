@@ -42,7 +42,7 @@ public class EmailService {
         emailSender.send(message);
     }
     
-    public void sendEmailAgent(EmailModel user) throws MessagingException, IOException {
+    public void sendEmailCompte(EmailModel user) throws MessagingException, IOException {
         MimeMessage message = emailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED,
                 StandardCharsets.UTF_8.name());

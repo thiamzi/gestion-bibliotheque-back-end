@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import sn.thies.ut.modeles.Etudiant;
 import sn.thies.ut.service.EtudiantService;
+import sn.thies.ut.service.UserService;
 
 
 @RestController
@@ -20,23 +21,14 @@ import sn.thies.ut.service.EtudiantService;
 public class EtudiantController {
 	
 	private final EtudiantService etudiantService;
+	private final UserService userService;
 	
-
-	public EtudiantController(EtudiantService etudiantService) {
+	public EtudiantController(EtudiantService etudiantService , UserService userService) {
 		this.etudiantService = etudiantService;
+		this.userService = userService;
+		
 	}
 
-	@GetMapping("/alletudiantstrue")
-	public ResponseEntity<List<Etudiant>> getAlletudiantsTrue(){
-		List<Etudiant> etudiants = etudiantService.getAllEtudiantTrue();
-		return new ResponseEntity<List<Etudiant>>(etudiants , HttpStatus.OK);
-	}
-	
-	@GetMapping("/alletudiantsfalse")
-	public ResponseEntity<List<Etudiant>> getAlletudiantsFalse(){
-		List<Etudiant> etudiants = etudiantService.getAllEtudiantFalse();
-		return new ResponseEntity<List<Etudiant>>(etudiants , HttpStatus.OK);
-	}
 	@GetMapping("/alletudiants")
 	public ResponseEntity<List<Etudiant>> getAlletudiants(){
 		List<Etudiant> etudiants = etudiantService.getAllEtudiants();
@@ -53,6 +45,7 @@ public class EtudiantController {
 	@DeleteMapping("/deleteetudiant/{id}")
 	public ResponseEntity<Etudiant> deleteetudiant(@PathVariable Integer id){
 		etudiantService.deleteEtudiant(id);
+		userService.deleteUser(id);
 		return new ResponseEntity<Etudiant>(HttpStatus.OK);
 	}
 	
@@ -68,9 +61,4 @@ public class EtudiantController {
 		return new ResponseEntity<Etudiant>(updateetudiant , HttpStatus.OK);
 	}
 
-	@PutMapping("/validateetudiant")
-	public 	ResponseEntity<Etudiant> validateetudiant(@RequestBody Etudiant etudiant){
-		Etudiant valideetudiant = etudiantService.validerEtudiant(etudiant);
-		return new ResponseEntity<Etudiant>(valideetudiant , HttpStatus.OK);
-	}
 }

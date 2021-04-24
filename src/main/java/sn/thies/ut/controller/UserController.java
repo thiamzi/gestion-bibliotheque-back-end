@@ -114,9 +114,9 @@ public class UserController {
 				return new ResponseEntity<EmailModel>(user , HttpStatus.OK);
 	}
 	
-	@PostMapping("/emailagent")
+	@PostMapping("/emailcompte")
 	public ResponseEntity<EmailModel> sendMailAgent(@RequestBody EmailModel user) throws MessagingException{
-				this.emailService.sendEmailAgent(user);
+				this.emailService.sendEmailCompte(user);
 				return new ResponseEntity<EmailModel>(user , HttpStatus.OK);
 	}
 	

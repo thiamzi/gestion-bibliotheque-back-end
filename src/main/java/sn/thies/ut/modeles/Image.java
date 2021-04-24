@@ -46,8 +46,6 @@ public class Image implements Serializable {
     @Column(name = "url")
     private String url;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "imageCle")
-    private List<Etudiant> etudiantList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "imageCle")
     private List<Livre> livreList;
 
     public Image() {
