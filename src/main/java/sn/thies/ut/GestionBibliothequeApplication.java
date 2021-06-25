@@ -41,7 +41,7 @@ public class GestionBibliothequeApplication {
 
 	corsConfiguration.setAllowCredentials(true);
 	
-	corsConfiguration.setAllowedOrigins(Arrays.asList("https://biblioteque-4dc77.web.app" , "http://localhost:41327"));
+	corsConfiguration.setAllowedOrigins(Arrays.asList("*"));
 
 	corsConfiguration.setAllowedHeaders(Arrays.asList("Origin", "Access-Control-Allow-Origin", "Content-Type",
 

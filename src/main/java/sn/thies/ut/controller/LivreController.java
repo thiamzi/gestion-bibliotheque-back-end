@@ -56,5 +56,4 @@ public class LivreController {
 		return new ResponseEntity<Livre>(updatelivre , HttpStatus.OK);
 	}
 	
-
 }
