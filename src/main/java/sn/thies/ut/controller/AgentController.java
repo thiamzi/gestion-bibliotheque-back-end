@@ -40,7 +40,6 @@ public class AgentController {
 		return new ResponseEntity<Agent>(agent , HttpStatus.OK);
 	}
 	
-	
 	@DeleteMapping("/deleteagent/{id}")
 	public ResponseEntity<Agent> deleteagent(@PathVariable Integer id){
 		agentService.deleteAgent(id);
@@ -49,7 +48,6 @@ public class AgentController {
 	}
 	
 	@PostMapping("/addagent")
-	@PreAuthorize("hasRole('ADMIN')")
 	public 	ResponseEntity<Agent> addagent(@RequestBody Agent agent){
 		Agent newagent = agentService.addAgent(agent);
 		return new ResponseEntity<Agent>(newagent , HttpStatus.OK);
@@ -60,5 +58,4 @@ public class AgentController {
 		Agent updateagent = agentService.updateAgent(agent);
 		return new ResponseEntity<Agent>(updateagent , HttpStatus.OK);
 	}
- 
 }

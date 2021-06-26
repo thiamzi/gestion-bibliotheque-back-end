@@ -10,6 +10,7 @@ import sn.thies.ut.repository.AgentRepository;
 public class AgentService {
 
 	private final AgentRepository agentrepository;
+	
 	@Autowired
 	public AgentService(AgentRepository agentrepository) {
 		this.agentrepository = agentrepository;
