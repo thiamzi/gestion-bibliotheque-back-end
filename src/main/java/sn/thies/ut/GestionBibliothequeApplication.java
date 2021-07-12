@@ -24,7 +24,7 @@ public class GestionBibliothequeApplication {
 
 	CorsConfiguration corsConfiguration = new CorsConfiguration();
 
-	corsConfiguration.setAllowCredentials(true);
+	corsConfiguration.setAllowCredentials(false);
 	
 	corsConfiguration.setAllowedOrigins(Arrays.asList("*"));
 
