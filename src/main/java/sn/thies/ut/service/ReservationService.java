@@ -72,6 +72,11 @@ public class ReservationService {
 	}
 	
 	public void deleteReservation(Integer id) {
+		
+		int idlivre = this.findOneReservation(id).getLivreIdlivre();
+		Livre livre =  this.livreservice.findOneLivre(idlivre);
+		livre.setNbdisponible(livre.getNbdisponible() + 1);
+		
 		this.reservationrepository.deleteById(id);
 	}
 	

@@ -87,6 +87,11 @@ public class EmpruntService {
 		return results;
 	}
 	public void deleteEmprunt(Integer id) {
+		
+		int idlivre = this.findOneEmprunt(id).getLivreIdlivre();
+		Livre livre =  this.livreservice.findOneLivre(idlivre);
+		livre.setNbdisponible(livre.getNbdisponible() + 1);
+		
 		this.empruntrepository.deleteById(id);
 	}
 	
@@ -101,6 +106,16 @@ public class EmpruntService {
 	*/
 	public Emprunt confirmerEmprunt(Emprunt emprunt) {
 		emprunt.setConfirmer(true);
+		Etudiant etudiant = this.etudiantservice.findOneEtudiant(emprunt.getEtudiantUserIduser());
+		
+		EmailModel email = new EmailModel(etudiant.getUser().getEmail(), "Votre emprunt qui a pour numero " + emprunt.getNumeroEmprunt() + " vient d'etre confirmé", "Confirmation emprunt", null, null);
+		try {
+			this.emailService.sendEmailEtudiant(email);
+		}  catch (MessagingException e) {
+			
+			e.printStackTrace();
+		}
+		
 		return this.empruntrepository.save(emprunt);
 	}
 	
