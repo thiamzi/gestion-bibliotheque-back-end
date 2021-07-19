@@ -120,9 +120,24 @@ public class EmpruntService {
 	}
 	
 	public Emprunt regleEmprunt(Emprunt emprunt) {
+
 		Date date = new Date();
 		emprunt.setDateremise(date);
 		emprunt.setRegle(true);
+		
+		Livre livre =  this.livreservice.findOneLivre(emprunt.getLivreIdlivre());
+		livre.setNbdisponible(livre.getNbdisponible() + 1);
+		
+		Etudiant etudiant = this.etudiantservice.findOneEtudiant(emprunt.getEtudiantUserIduser());
+		
+		EmailModel email = new EmailModel(etudiant.getUser().getEmail(), "Votre emprunt qui a pour numero " + emprunt.getNumeroEmprunt() + " vient d'etre reglé", "Reglage emprunt", null, null);
+		try {
+			this.emailService.sendEmailEtudiant(email);
+		}  catch (MessagingException e) {
+			
+			e.printStackTrace();
+		}
+
 		return this.empruntrepository.save(emprunt);
 	}
 }
