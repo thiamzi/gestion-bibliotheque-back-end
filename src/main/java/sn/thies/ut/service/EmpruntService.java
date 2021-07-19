@@ -41,10 +41,8 @@ public class EmpruntService {
 	@SuppressWarnings("deprecation")
 	public Emprunt addEmprunt(Emprunt emprunt) {
 		Date date = new Date();
-		Date dateRecup = date;
-		dateRecup.setDate(date.getDate() + 3);
-		Date dateFin = date;
-		dateFin.setMonth(date.getMonth() +1);
+		Date dateRecup = new Date(date.getYear() , date.getMonth() , date.getDate()+3);
+		Date dateFin = new Date(date.getYear() , date.getMonth()+1 , date.getDate());
 		emprunt.setDateFin(dateFin);
 		emprunt.setDelai_recup(dateRecup);
 		emprunt.setDateDebut(date);

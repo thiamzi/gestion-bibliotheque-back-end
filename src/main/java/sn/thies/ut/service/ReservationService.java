@@ -38,8 +38,8 @@ public class ReservationService {
 	public Reservation addReservation(Reservation reservation) {
 		Date date = new Date();
 		reservation.setDate(date);
-		Date dateFin = date;
-		dateFin.setDate(date.getDate() +10);
+		Date dateFin = new Date(date.getYear() , date.getMonth() , date.getDate()+10);;
+
 		reservation.setDateFin(dateFin);
 		
 		Livre livre =  this.livreservice.findOneLivre(reservation.getLivreIdlivre());
