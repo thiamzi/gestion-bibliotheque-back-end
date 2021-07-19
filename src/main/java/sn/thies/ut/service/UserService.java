@@ -70,6 +70,10 @@ public class UserService implements UserDetailsService{
 		user.setPassword(bcryptEncoder.encode(user.getPassword()));
 		return this.userrepository.save(user);
 	}
+	
+	public UserModel findOneUserByID(Integer id) {
+		return this.userrepository.findById(id).get();
+	}
 
 }
 
