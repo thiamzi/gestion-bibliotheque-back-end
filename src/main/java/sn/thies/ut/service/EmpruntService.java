@@ -12,13 +12,11 @@ import org.springframework.stereotype.Service;
 
 import email.EmailModel;
 import email.EmailService;
-import io.jsonwebtoken.io.IOException;
 import sn.thies.ut.modeles.Emprunt;
 import sn.thies.ut.modeles.Etudiant;
 import sn.thies.ut.modeles.Livre;
 import sn.thies.ut.repository.EmpruntRepository;
-import sn.thies.ut.repository.EtudiantRepository;
-import sn.thies.ut.repository.LivreRepository;
+
 
 @Service
 public class EmpruntService {
@@ -40,6 +38,7 @@ public class EmpruntService {
 	}
 	
 
+	@SuppressWarnings("deprecation")
 	public Emprunt addEmprunt(Emprunt emprunt) {
 		Date date = new Date();
 		Date dateRecup = date;

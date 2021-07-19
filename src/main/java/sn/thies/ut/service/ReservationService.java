@@ -34,6 +34,7 @@ public class ReservationService {
 		this.em = em;
 	}
 	
+	@SuppressWarnings("deprecation")
 	public Reservation addReservation(Reservation reservation) {
 		Date date = new Date();
 		reservation.setDate(date);

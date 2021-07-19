@@ -120,11 +120,6 @@ public class UserController {
 				return new ResponseEntity<EmailModel>(user , HttpStatus.OK);
 	}
 	
-	@PostMapping("/emaillivre")
-	public ResponseEntity<EmailModel> sendMailForLivre(@RequestBody EmailModel user) throws MessagingException{
-				this.emailService.sendEmailForLivre(user);
-				return new ResponseEntity<EmailModel>(user , HttpStatus.OK);
-	}
 	
 }
 
